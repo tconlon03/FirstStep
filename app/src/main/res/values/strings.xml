@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">First Step</string>
+    <string name="first_name_edit_text_hint">Please Enter Your First Name</string>
+    <string name="surname_edit_text_hint">Please Enter Your Surname</string>
+    <string name="email_edit_text_hint">Please Enter Your Email Address</string>
+    <string name="phone_edit_text_hint">Please Enter Your Phone Number</string>
+    <string name="age_label_text_view">Please Enter Your Date of Birth</string>
+    <string name="name_age_label">Please enter your information so our service can be personalised just for you.</string>
+    <string name="contact_label">We just need to gather some contact information to ensure we can get in touch with you.
+    \nYou can choose to be contacted by both email and phone if you want. </string>
+    <string name="email_checkbox_label">I would like to be contacted by email</string>
+    <string name="phone_checkbox_label">I would like to be contacted by text</string>
+    <string name="complete_registration_button">Complete Registration</string>
+    <string name="title_activity_home">HomeActivity</string>
+</resources>
