@@ -1,10 +1,11 @@
-package com.example.tiarnan.firststep;
+package com.tiarnan.firststep;
 
 import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.SwipeDismissBehavior;
-import android.support.v4.view.MotionEventCompat;
-import android.support.v7.app.AppCompatActivity;
+
+import com.tiarnan.firststep.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.GestureDetector;
@@ -14,7 +15,7 @@ import android.widget.TextView;
 
 import utilities.SwipeDetector;
 
-public class MainActivity extends AppCompatActivity {
+public class WelcomeActivity extends AppCompatActivity {
 
     //debug tag
     String main_tag = "MAIN_ACTIVITY_LOGGING";
@@ -44,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Log.d(main_tag, "Main Activity Touch Event Detected");
+        Log.d(main_tag, "Welcome Activity Touch Event Detected");
         detector.onTouchEvent(event);
         if (detectorListener.getLeftSwipe()){
             detectorListener.reset();
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openNameAgeActivity(){
-        Log.d(main_tag, "Main Activity opening NameAge Activity");
+        Log.d(main_tag, "Welcome Activity opening NameAge Activity");
         Intent intent = new Intent(this, NameAgeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);

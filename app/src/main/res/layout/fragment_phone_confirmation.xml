@@ -1,0 +1,118 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/frameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tiarnan.firststep.EmailConfirmationFragment">
+
+    <EditText
+        android:id="@+id/editTextEnterVerification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="216dp"
+        android:layout_marginBottom="8dp"
+        android:ems="10"
+        android:hint="@string/enter_ver_code_hint"
+        android:inputType="number"
+        android:textAlignment="center"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/buttonSendConfirmText"
+        app:layout_constraintStart_toStartOf="@+id/buttonSendConfirmText"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.717" />
+
+    <TextView
+        android:id="@+id/labelConfirmDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.06999999"
+        android:text="@string/confirm_phone_text" />
+
+    <TextView
+        android:id="@+id/textViewConfirmName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNameConfirmLabel"
+        app:layout_constraintEnd_toEndOf="@+id/labelConfirmDetails"
+        app:layout_constraintTop_toTopOf="@+id/textViewNameConfirmLabel" />
+
+    <TextView
+        android:id="@+id/textViewNameConfirmLabel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/confirm_name_label"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSendConfirmText"
+        app:layout_constraintStart_toStartOf="@+id/labelConfirmDetails"
+        app:layout_constraintTop_toBottomOf="@+id/labelConfirmDetails"
+        app:layout_constraintVertical_bias="0.23000002" />
+
+    <TextView
+        android:id="@+id/textViewDOBConfirmLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/confirm_dob_label"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSendConfirmText"
+        app:layout_constraintStart_toStartOf="@+id/textViewNameConfirmLabel"
+        app:layout_constraintTop_toBottomOf="@+id/labelConfirmDetails" />
+
+    <TextView
+        android:id="@+id/textViewConfirmDOB"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewDOBConfirmLabel"
+        app:layout_constraintEnd_toEndOf="@+id/textViewConfirmName"
+        app:layout_constraintTop_toTopOf="@+id/textViewDOBConfirmLabel" />
+
+    <TextView
+        android:id="@+id/textViewPhoneConfirmLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/confirm_phone_label"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSendConfirmText"
+        app:layout_constraintStart_toStartOf="@+id/textViewDOBConfirmLabel"
+        app:layout_constraintTop_toBottomOf="@+id/labelConfirmDetails"
+        app:layout_constraintVertical_bias="0.79" />
+
+    <TextView
+        android:id="@+id/textViewConfirmPhone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPhoneConfirmLabel"
+        app:layout_constraintEnd_toEndOf="@+id/labelConfirmDetails"
+        app:layout_constraintTop_toTopOf="@+id/textViewPhoneConfirmLabel" />
+
+    <Button
+        android:id="@+id/buttonSendConfirmText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="@string/send_phone_confirmation_button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/labelConfirmDetails"
+        app:layout_constraintStart_toStartOf="@+id/labelConfirmDetails"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

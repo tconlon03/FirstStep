@@ -1,15 +1,12 @@
-package com.example.tiarnan.firststep;
+package com.tiarnan.firststep;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
-import android.os.PersistableBundle;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
@@ -17,9 +14,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.Calendar;
-import java.util.Date;
 
 import utilities.SwipeDetector;
 import utilities.formatUtilities;
@@ -70,8 +64,13 @@ public class NameAgeActivity extends AppCompatActivity  {
     }
 
     private void setUpValidation() {
-        et_first_name.addTextChangedListener(new TextValidator(et_first_name) {
+        et_first_name.addTextChangedListener(new TextValidator() {
             @Override
+            public void afterTextChanged(Editable s) {
+                String text = et_first_name.getText().toString();
+                validate(et_first_name, text);
+            }
+
             public void validate(TextView textView, String text) {
                 if (text.length() == 0){
                     textView.setError("You must enter a first name");
@@ -82,8 +81,14 @@ public class NameAgeActivity extends AppCompatActivity  {
                 }
             }
         });
-        et_surname.addTextChangedListener(new TextValidator(et_surname) {
+
+        et_surname.addTextChangedListener(new TextValidator() {
             @Override
+            public void afterTextChanged(Editable s) {
+                String text = et_surname.getText().toString();
+                validate(et_surname, text);
+            }
+
             public void validate(TextView textView, String text) {
                 if (text.length() == 0){
                     textView.setError("You must enter a first name");
@@ -162,7 +167,7 @@ public class NameAgeActivity extends AppCompatActivity  {
 
     public void openWelcomeActivity(){
         Log.i(name_age_tag, "Name Age Activity opening Welcome Activity");
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, WelcomeActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }

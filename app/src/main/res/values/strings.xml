@@ -1,15 +1,78 @@
 <resources>
     <string name="app_name">First Step</string>
+    <!--Personal details activity strings-->
     <string name="first_name_edit_text_hint">Please Enter Your First Name</string>
     <string name="surname_edit_text_hint">Please Enter Your Surname</string>
-    <string name="email_edit_text_hint">Please Enter Your Email Address</string>
-    <string name="phone_edit_text_hint">Please Enter Your Phone Number</string>
     <string name="age_label_text_view">Please Enter Your Date of Birth</string>
-    <string name="name_age_label">Please enter your information so our service can be personalised just for you.</string>
-    <string name="contact_label">We just need to gather some contact information to ensure we can get in touch with you.
-    \nYou can choose to be contacted by both email and phone if you want. </string>
+    <string name="name_age_label">
+        Please enter your information so our service can be personalised just for you.
+    </string>
+
+    <!--Contact activity strings-->
+    <string name="contact_label">
+        We just need to gather some contact information to ensure we can get in touch with you.
+        \nYou can choose to be contacted by both email and phone if you want.
+        \nIf you don\'t want to be contacted by either email or phone leave them blank.
+    </string>
+    <string name="email_edit_text_hint">Please Enter Your Email Address</string>
     <string name="email_checkbox_label">I would like to be contacted by email</string>
+    <string name="phone_edit_text_hint">Please Enter Your Phone Number, including country code</string>
     <string name="phone_checkbox_label">I would like to be contacted by text</string>
     <string name="complete_registration_button">Complete Registration</string>
+
+    <!--Confirmation activity strings-->
     <string name="title_activity_home">HomeActivity</string>
+    <string name="confirm_email_text">
+        The last step is to confirm your email address and then you\'re good to go.
+        \n Make sure you\'re details are correct before requesting the corfirmation link!
+    </string>
+    <string name="confirm_phone_email_text">
+        The last step is to confirm your phone number and email address and then you\'re good to go.
+        \n Make sure you\'re details are correct before requesting the corfirmation email and text!
+    </string>
+    <string name="confirm_phone_text">
+        The last step is to confirm your phone number and then you\'re good to go.
+        \n Make sure you\'re details are correct before requesting the corfirmation code!
+    </string>
+    <string name="send_phone_confirmation_button_text">Send me a confirmation text!</string>
+    <string name="send_email_confirmation_button_text">Send me a confirmation email!</string>
+    <string name="confirm_name_label">Name :</string>
+    <string name="confirm_dob_label">Date of Birth :</string>
+    <string name="confirm_email_label">Email :</string>
+    <string name="confirm_phone_label">Phone :</string>
+
+    <string name="enter_ver_code_hint">Enter Verification Code</string>
+    <string name="send_another_text">Send Text Again</string>
+    <string-array name="quotes">
+        <item>There are far, far better things ahead than anything we leave behind - C. S. Lewis</item>
+        <item>But in the end one needs more courage to live than to kill himself - Albert Camus</item>
+        <item>The bravest thing I ever did was continuing my life when I wanted to die - Juliette Lewis</item>
+        <item>When it is darkest, we can see the stars - Ralph Waldo Emerson</item>
+        <item>Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle - Christian D. Larson</item>
+        <item>Never let anyone else decide who you are - Caroline Rhea</item>
+        <item>We either make ourselves miserable, or we make ourselves strong. The amount of work is the same - Carlos Castaneda</item>
+        <item>Place your hand over your heart, can you feel it? That is called purpose. You\'re alive for a reason so don\'t ever give up - unknown</item>
+        <item>If you are looking for a sign not to kill yourself, this is it - unknown</item>
+        <item>All things are difficult before they are easy - Thomas Fuller</item>
+        <item>Grit your teeth and let it hurt. Don\'t deny it, don\'t be overwhelmed by it. It will not last forever - Harold Kushner</item>
+        <item>Never never never give up - Winston Churchill</item>
+        <item>The longer we dwell on our misfortunes, the greater is their power to harm us - Voltaire</item>
+        <item>Don\'t cry because it\'s over; smile because it happened - Dr. Seuss</item>
+        <item>Suicide is not a remedy - James A. Garfield</item>
+        <item>Though no one can go back and make a brand new start, anyone can start now and make a brand new ending - Carl Bard</item>
+        <item>When the whole world is silent, even one voice becomes powerful - Malala Yousafzai</item>
+        <item>Suicide is a permanent solution to a temporary problem - Phil Donahue</item>
+        <item>If you want to show me that you really love me, don\'t say that you would die for me, instead stay alive for me - unknown</item>
+        <item>Never give up, for that is just the place and time that the tide will turn - Harriet Beecher Stowe</item>
+        <item>If someone listens, or stretches out a hand, or whispers a word of encouragement, or attempts to understand a lonely person, extraordinary things begin to happen - Loretta Girzartis</item>
+        <item>I hope you live a life you are proud of. If you find that you are not, I hope you have the strength to start all over again - F. Scott Fitzgerald</item>
+        <item>The world is a better place with you in it - unknown</item>
+        <item>If your heart is still beating, God is not done with you yet - Dillon Burroughs</item>
+        <item>The pain passes, but the beauty remains - Pierre August Renoir</item>
+        <item>Suicide doesn\'t end the chances of life getting worse, it eliminates the possibility of it ever getting any better - unknown</item>
+        <item>I wanted to kill the sweetest,smartest and the most beautiful person on this earth, but then I thought..SUICIDE is a crime! - unknown</item>
+        <item>One of the secrets of life is to make stepping stones out of stumbling blocks - Jack Penn</item>
+        <item>The real reason for not committing suicide is because you always know how swell life gets again after the hell is over - Ernest Hemingway</item>
+        <item>The man who kills a man kills a man. The man who kills himself kills all men. As far as he is concerned, he wipes out the world - G.K. Chesterton</item>
+    </string-array>
 </resources>

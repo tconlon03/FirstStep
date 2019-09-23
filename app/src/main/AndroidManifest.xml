@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.tiarnan.firststep">
+    package="com.tiarnan.firststep">
 
     <application
         android:allowBackup="true"
@@ -9,15 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".HomeActivity"></activity>
-        <activity
-            android:name=".ContactActivity"
-            android:launchMode="singleTop" />
-        <activity
-            android:name=".NameAgeActivity"
-            android:launchMode="singleTop" />
-        <activity
-            android:name=".MainActivity"
+        <activity android:name="com.tiarnan.firststep.ConfirmationActivity"
+            android:launchMode="singleTop">
+        </activity>
+        <activity android:name="com.tiarnan.firststep.HomeActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,10 +20,25 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.tiarnan.firststep.ContactActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.tiarnan.firststep.NameAgeActivity"
+            android:launchMode="singleTop" />
+        <activity
+            android:name="com.tiarnan.firststep.WelcomeActivity"
+            android:launchMode="singleTop">
+        </activity>
 
         <service
-            android:name="services.runMLService"
+            android:name="utilities.runMLService"
             android:exported="false" />
+        <service
+            android:name="utilities.emailVerificationService"
+            android:stopWithTask="true"
+            android:exported="false" />
+
     </application>
 
 </manifest>
