@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimaryLight</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
     </style>
     <!-- parent="ThemeOverlay.MaterialComponents.Dark.ActionBa -->
     <style name="AppTheme2" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">

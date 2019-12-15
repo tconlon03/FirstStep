@@ -1,12 +1,9 @@
 package com.tiarnan.firststep;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.net.wifi.hotspot2.pps.Credential;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -20,18 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.tiarnan.firststep.R;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-
-import java.util.Random;
-
-import utilities.SwipeDetector;
+import com.tiarnan.firststep.utilities.SwipeDetector;
 
 public class ContactActivity extends AppCompatActivity {
 

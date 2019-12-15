@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tiarnan.firststep">
 
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -9,10 +11,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.tiarnan.firststep.ConfirmationActivity"
-            android:launchMode="singleTop">
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/title_activity_settings"
+            android:parentActivityName=".HomeActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".HomeActivity">
+            </meta-data>
         </activity>
-        <activity android:name="com.tiarnan.firststep.HomeActivity"
+        <activity
+            android:name=".ConfirmationActivity"
+            android:launchMode="singleTop"></activity>
+        <activity
+            android:name=".HomeActivity"
             android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,24 +33,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.tiarnan.firststep.ContactActivity"
+            android:name=".ContactActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name="com.tiarnan.firststep.NameAgeActivity"
+            android:name=".NameAgeActivity"
             android:launchMode="singleTop" />
         <activity
-            android:name="com.tiarnan.firststep.WelcomeActivity"
-            android:launchMode="singleTop">
-        </activity>
+            android:name=".WelcomeActivity"
+            android:launchMode="singleTop"></activity>
 
         <service
-            android:name="utilities.runMLService"
+            android:name=".utilities.runMLService"
             android:exported="false" />
         <service
-            android:name="utilities.emailVerificationService"
-            android:stopWithTask="true"
-            android:exported="false" />
-
+            android:name=".utilities.emailVerificationService"
+            android:exported="false"
+            android:stopWithTask="true" />
     </application>
 
 </manifest>

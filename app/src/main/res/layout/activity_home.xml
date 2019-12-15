@@ -20,4 +20,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.42000002" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/ButtonCheckIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="#673AB7"
+        android:elevation="0dp"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="10dp"
+        android:text="Check In"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#000000"
+        app:backgroundTint="#673AB7"
+        app:cornerRadius="6dp"
+        app:layout_constraintEnd_toEndOf="@+id/floatingActionButtonCheckin"
+        app:layout_constraintTop_toTopOf="@+id/floatingActionButtonCheckin" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/floatingActionButtonCheckin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="60dp"
+        android:clickable="true"
+        android:elevation="10dp"
+        android:src="@drawable/ic_up"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:useCompatPadding="false" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

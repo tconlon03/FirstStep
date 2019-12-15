@@ -15,10 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import utilities.SwipeDetector;
-import utilities.formatUtilities;
+import com.tiarnan.firststep.utilities.SwipeDetector;
+import com.tiarnan.firststep.utilities.formatUtilities;
 
-import static utilities.formatUtilities.timestampToDayMonthYear;
+import static com.tiarnan.firststep.utilities.formatUtilities.timestampToDayMonthYear;
 
 public class NameAgeActivity extends AppCompatActivity  {
 

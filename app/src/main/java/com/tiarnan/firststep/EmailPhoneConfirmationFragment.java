@@ -1,13 +1,11 @@
 package com.tiarnan.firststep;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
 import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,9 +14,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.tiarnan.firststep.R;
-
-import static utilities.formatUtilities.timestampToDayMonthYear;
+import static com.tiarnan.firststep.utilities.formatUtilities.timestampToDayMonthYear;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,6 +42,7 @@ public class EmailPhoneConfirmationFragment extends Fragment{
     private TextView tv_confirm_phone;
     private EditText et_verification_code;
     private OnSendConfirmationListener mListener;
+    private TextValidator codeValidator;
 
     public EmailPhoneConfirmationFragment() {
         // Required empty public constructor
@@ -76,6 +73,16 @@ public class EmailPhoneConfirmationFragment extends Fragment{
             mEmail = getArguments().getString(ARG_EMAIL);
             mPhone = getArguments().getString(ARG_PHONE);
         }
+        codeValidator = new TextValidator() {
+            @Override
+            public void afterTextChanged(Editable s) {
+                String formatted_s = formatVerificationCode(s.toString());
+                s.replace(0, formatted_s.length(), formatted_s);
+                if (formatted_s.length() == 6){
+                    mListener.validateEnteredVerificationCode(s.toString());
+                }
+            }
+        };
     }
 
     @Override
@@ -130,17 +137,7 @@ public class EmailPhoneConfirmationFragment extends Fragment{
     public void onReceiveCode(){
         et_verification_code.setVisibility(View.VISIBLE);
         btn_send_text.setText(R.string.send_another_text);
-        et_verification_code.addTextChangedListener(new TextValidator() {
-            @Override
-            public void afterTextChanged(Editable s){
-                String text = s.toString();
-                text = formatVerificationCode(text);
-                et_verification_code.setText(text);
-                if (s.toString().length() == 6){
-                    mListener.validateEnteredVerificationCode(s.toString());
-                }
-            };
-        });
+        et_verification_code.addTextChangedListener(codeValidator);
     }
 
     public void onAutoReceiveCode(String autoRetreivedCode) {

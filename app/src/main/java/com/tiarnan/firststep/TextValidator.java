@@ -25,9 +25,9 @@ public abstract class TextValidator implements TextWatcher {
         }
         int len = digits.length();
         if (len >= 5){
-            output = digits.substring(0, 2) + "-" + digits.substring(2, 4) + "-" + digits.substring(4, Math.min(6, len));
+            output = digits.substring(0, 2) + " " + digits.substring(2, 4) + " " + digits.substring(4, Math.min(6, len));
         } else if (digits.length() >= 3){
-            output = digits.substring(0, 2) + "-" + digits.substring(2, len);
+            output = digits.substring(0, 2) + " " + digits.substring(2, len);
         } else {
             output = digits;
         }

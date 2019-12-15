@@ -43,14 +43,30 @@
 
     <string name="enter_ver_code_hint">Enter Verification Code</string>
     <string name="send_another_text">Send Text Again</string>
+
+    <string name="finished_setup_text">Congratulations - You\'re ready to go!</string>
+    <string-array name="checkin_values">
+        <item>I\'m very happy</item>
+        <item>I\'m pretty happy</item>
+        <item>I\'m doing okay</item>
+        <item>Idon\'t feel great</item>
+        <item>I feel very sad</item>
+    </string-array>
+    <string-array name="checkin_response">
+        <item>Good to hear boss</item>
+        <item>Keep her lit</item>
+        <item>Keep on keeping on</item>
+        <item>Every little thing is going to be okay</item>
+        <item>Things can only go up from here</item>
+    </string-array>
     <string-array name="quotes">
-        <item>There are far, far better things ahead than anything we leave behind - C. S. Lewis</item>
+        <item>There are far\, far better things ahead than anything we leave behind - C. S. Lewis</item>
         <item>But in the end one needs more courage to live than to kill himself - Albert Camus</item>
         <item>The bravest thing I ever did was continuing my life when I wanted to die - Juliette Lewis</item>
-        <item>When it is darkest, we can see the stars - Ralph Waldo Emerson</item>
+        <item>When it is darkest\, we can see the stars - Ralph Waldo Emerson</item>
         <item>Believe in yourself and all that you are. Know that there is something inside you that is greater than any obstacle - Christian D. Larson</item>
         <item>Never let anyone else decide who you are - Caroline Rhea</item>
-        <item>We either make ourselves miserable, or we make ourselves strong. The amount of work is the same - Carlos Castaneda</item>
+        <item>We either make ourselves miserable\, or we make ourselves strong. The amount of work is the same - Carlos Castaneda</item>
         <item>Place your hand over your heart, can you feel it? That is called purpose. You\'re alive for a reason so don\'t ever give up - unknown</item>
         <item>If you are looking for a sign not to kill yourself, this is it - unknown</item>
         <item>All things are difficult before they are easy - Thomas Fuller</item>
@@ -75,4 +91,24 @@
         <item>The real reason for not committing suicide is because you always know how swell life gets again after the hell is over - Ernest Hemingway</item>
         <item>The man who kills a man kills a man. The man who kills himself kills all men. As far as he is concerned, he wipes out the world - G.K. Chesterton</item>
     </string-array>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Strings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_use_phone_title">Use Phone as a contact method</string>
+    <string name="use_phone_summ_on">We will use your phone number as a contact method</string>
+    <string name="use_phone_summ_off">We won\'t use your phone number as a contact method</string>
+    <string name="settings_use_email_title">Use Email as a contact method</string>
+    <string name="use_email_summ_on">We will use your email address as a contact method</string>
+    <string name="use_email_summ_off">We won\'t use your email address as a contact method</string>
+    <string name="settings_use_search_title">Use search results</string>
+    <string name="use_search_summ_on">We will use your search results</string>
+    <string name="use_search_summ_off">We won\'t use your search results</string>
+    <string name="settings_use_fb_title">Use fb posts</string>
+    <string name="use_fb_summ_on">We will use your fb posts</string>
+    <string name="use_fb_summ_off">We won\'t use your fb posts</string>
+    <string name="settings_use_twitter_title">Use twitter posts</string>
+    <string name="use_twitter_summ_on">We will use your tweets</string>
+    <string name="use_twitter_summ_off">We won\'t use your tweets</string>
+
 </resources>
