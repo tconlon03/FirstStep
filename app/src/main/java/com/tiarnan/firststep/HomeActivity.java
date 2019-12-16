@@ -18,6 +18,7 @@ import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -33,6 +34,8 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.Type;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
@@ -52,6 +55,7 @@ public class HomeActivity extends AppCompatActivity implements CheckInListDialog
 
     private String home_tag = "HOME_ACTIVITY_LOGGING";
 
+    private final int CHECKIN_ARRAY_SIZE = 30;
     private SharedPreferences sharedpreferences;
     private Boolean mFirstTime = false;
     private TextView mTextViewQuote;
@@ -187,16 +191,26 @@ public class HomeActivity extends AppCompatActivity implements CheckInListDialog
         editor.putStringSet(Constants.checkin_array_key, set);*/
         editor.putString(Constants.checkin_array_key, arrayAsString);
         editor.commit();
-        //TODO only allow one value per day
     }
 
 
     public void fillCheckinArrayList(ArrayList<checkinObj> checkInArrayList, String value){
-        //TODO check dates
-        if (checkInArrayList.size() > 30){
+        Date now = new Date();
+        checkinObj checkin = new checkinObj(now, value);
+        if (checkInArrayList.size() >= CHECKIN_ARRAY_SIZE){
+            checkInArrayList.remove(CHECKIN_ARRAY_SIZE -1);
+        }
+        Date last_added_checkin = checkInArrayList.get(0).getDate();
+        String day_now = (String) DateFormat.format("dd",   now);
+        String day_last = (String) DateFormat.format("dd",   last_added_checkin);
+        String month_now = (String) DateFormat.format("MM",   now);
+        String month_last = (String) DateFormat.format("MM",   last_added_checkin);
+        String year_now = (String) DateFormat.format("yyyy",   now);
+        String year_last = (String) DateFormat.format("yyyy",   last_added_checkin);
+        if (day_now.equals(day_last) && month_now.equals(month_last) && year_now.equals(year_last)){
             checkInArrayList.remove(0);
         }
-        checkInArrayList.add(new checkinObj(new Date(), value));
+        checkInArrayList.add(0, checkin);
     }
 
     @Override

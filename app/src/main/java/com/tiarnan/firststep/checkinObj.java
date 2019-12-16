@@ -10,4 +10,12 @@ public class checkinObj {
          this.date = date;
          this.value = value;
      }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public String getValue() {
+        return value;
+    }
 }
