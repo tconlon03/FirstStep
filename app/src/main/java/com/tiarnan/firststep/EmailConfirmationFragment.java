@@ -1,7 +1,6 @@
 package com.tiarnan.firststep;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,9 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.tiarnan.firststep.R;
-
-import static utilities.formatUtilities.timestampToDayMonthYear;
+import static com.tiarnan.firststep.utilities.formatUtilities.timestampToDayMonthYear;
 
 /**
  * A simple {@link Fragment} subclass.

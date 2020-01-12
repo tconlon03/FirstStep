@@ -1,4 +1,4 @@
-package utilities;
+package com.tiarnan.firststep.utilities;
 
 import android.app.IntentService;
 import android.content.Context;

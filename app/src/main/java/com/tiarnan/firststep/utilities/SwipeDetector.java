@@ -1,4 +1,4 @@
-package utilities;
+package com.tiarnan.firststep.utilities;
 
 import android.util.Log;
 import android.view.GestureDetector;

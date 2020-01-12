@@ -2,7 +2,6 @@ package com.tiarnan.firststep;
 
 import android.content.Intent;
 
-import com.tiarnan.firststep.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.TextView;
 
-import utilities.SwipeDetector;
+import com.tiarnan.firststep.utilities.SwipeDetector;
 
 public class WelcomeActivity extends AppCompatActivity {
 

@@ -26,7 +26,7 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
-import utilities.emailVerificationService;
+import com.tiarnan.firststep.utilities.emailVerificationService;
 
 public class ConfirmationActivity extends AppCompatActivity implements OnSendConfirmationListener {
 
@@ -71,22 +71,32 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
             mWaitingOnPhone = data_bundle.containsKey(Constants.waiting_for_phone_verified_key);
             if (mUseEmail == true ){
                 if(mUsePhone == true){
-                    Fragment emailPhoneConfirmationFragment = EmailPhoneConfirmationFragment.newInstance(mName, mDOB, mEmail, mPhone);
+                    EmailPhoneConfirmationFragment emailPhoneConfirmationFragment = EmailPhoneConfirmationFragment.newInstance(mName, mDOB, mEmail, mPhone);
                     this.setFragment(emailPhoneConfirmationFragment);
-                    if(mWaitingOnPhone) ((EmailPhoneConfirmationFragment) emailPhoneConfirmationFragment).onReceiveCode();
                 } else {
                     Fragment emailConfirmationFragment = EmailConfirmationFragment.newInstance(mName, mDOB, mEmail);
                     this.setFragment(emailConfirmationFragment);
                 }
             } else {
-                Fragment phoneConfirmationFragment = PhoneConfirmationFragment.newInstance(mName, mDOB, mPhone);
+                PhoneConfirmationFragment phoneConfirmationFragment = PhoneConfirmationFragment.newInstance(mName, mDOB, mPhone);
                 this.setFragment(phoneConfirmationFragment);
-                if(mWaitingOnPhone) ((PhoneConfirmationFragment) phoneConfirmationFragment).onReceiveCode();
             }
         }
         mAuth = FirebaseAuth.getInstance();
         if (mWaitingOnEmail) mUser = mAuth.getCurrentUser();
+        if (mWaitingOnPhone) mVerificationId = getVerificationId();
         writeToSharedPref();
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        // by this point the fragment onCreateView has been called
+        Fragment f = getSupportFragmentManager().findFragmentByTag("CurrentFragment");
+        if (mWaitingOnPhone){
+            if (mUseEmail) ((EmailPhoneConfirmationFragment) f).onReceiveCode();
+            else ((PhoneConfirmationFragment) f).onReceiveCode();
+        }
     }
 
     // Replace current Fragment with the destination Fragment.
@@ -189,7 +199,7 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
                         Toast.LENGTH_SHORT).show();
                 //now we can show the ui for entering the code
                 addWaitingStatus(Constants.waiting_for_phone_verified_key);
-                mVerificationId = verificationId;
+                saveVerificationId(verificationId);
                 Fragment f = getSupportFragmentManager().findFragmentByTag("CurrentFragment");
                 if (!mUseEmail){
                     ((PhoneConfirmationFragment) f).onReceiveCode();
@@ -229,6 +239,20 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
                         }
                     }
                 });
+    }
+
+    public String getVerificationId(){
+        sharedpreferences = getSharedPreferences(Constants.SETTINGS_PREFERENCE, Context.MODE_PRIVATE);
+        return sharedpreferences.getString("phone_verification_id", "not found");
+    }
+
+    public void saveVerificationId(String verificationId){
+        mVerificationId = verificationId;
+        //save to shared preferences in case app closes
+        sharedpreferences = getSharedPreferences(Constants.SETTINGS_PREFERENCE, Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        editor.putString("phone_verification_id", verificationId);
+        editor.commit();
     }
 
     //used for updating phone verified - email is done in service

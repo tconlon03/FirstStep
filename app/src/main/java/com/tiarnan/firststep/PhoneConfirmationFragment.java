@@ -15,9 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com .tiarnan.firststep.R;
-
-import static utilities.formatUtilities.timestampToDayMonthYear;
+import static com.tiarnan.firststep.utilities.formatUtilities.timestampToDayMonthYear;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -72,9 +70,19 @@ public class PhoneConfirmationFragment extends Fragment {
         codeValidator = new TextValidator() {
             @Override
             public void afterTextChanged(Editable s) {
+                //TODO : Format properly
+                /*et_verification_code.removeTextChangedListener(this);
                 String formatted_s = formatVerificationCode(s.toString());
-                s.replace(0, formatted_s.length(), formatted_s);
-                if (formatted_s.length() == 6){
+                if (s.toString() != formatted_s){
+                    s.clear();
+                    s.append(formatted_s);
+                    if (formatted_s.length() == 6){
+                        mListener.validateEnteredVerificationCode(s.toString());
+                    }
+                }
+                et_verification_code.addTextChangedListener(this);
+                */
+                if (s.toString().length() == 6){
                     mListener.validateEnteredVerificationCode(s.toString());
                 }
             }
