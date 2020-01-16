@@ -13,6 +13,8 @@ public class Constants {
     public static String email_verified_key = "EMAIL_VERIFIED";
     protected static String waiting_for_phone_verified_key = "WAITING_FOR_PHONE_VERIFIED";
     protected static String waiting_for_email_verified_key = "WAITING_FOR_EMAIL_VERIFIED";
+    protected static String phone_verification_expiration_key = "PHONE_EXPIRATION";
+    protected static String email_verification_expiration_key = "EMAIL_EXPIRATION";
     protected static String checkin_array_key = "CKHECKIN_ARRAY";
 
 }

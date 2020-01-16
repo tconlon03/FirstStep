@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.util.Date;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -44,6 +45,8 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
     private static String mSurname;
     private static boolean mWaitingOnEmail;
     private static boolean mWaitingOnPhone;
+
+    private long twenty_four_hours = 1000*60*60*24;
 
     private FirebaseAuth mAuth;
     private FirebaseUser mUser;
@@ -160,7 +163,7 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
 
     public void confirmationEmailSent(){
         Log.d(confirmation_tag, "Email sent, Service being started");
-        addWaitingStatus(Constants.waiting_for_email_verified_key);
+        addWaitingStatus(Constants.waiting_for_email_verified_key, Constants.email_verification_expiration_key);
         Intent intent = new Intent(this, emailVerificationService.class);
         startService(intent);
         Log.d(confirmation_tag, "Email Service started by conf activity");
@@ -198,7 +201,7 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
                                 "been sent to you via text.",
                         Toast.LENGTH_SHORT).show();
                 //now we can show the ui for entering the code
-                addWaitingStatus(Constants.waiting_for_phone_verified_key);
+                addWaitingStatus(Constants.waiting_for_phone_verified_key, Constants.phone_verification_expiration_key);
                 saveVerificationId(verificationId);
                 Fragment f = getSupportFragmentManager().findFragmentByTag("CurrentFragment");
                 if (!mUseEmail){
@@ -270,10 +273,11 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
         }
     }
 
-    private void addWaitingStatus(String field){
+    private void addWaitingStatus(String field, String expiration_field){
         sharedpreferences = getSharedPreferences(Constants.SETTINGS_PREFERENCE, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         editor.putBoolean(field, false);
+        editor.putLong(expiration_field, new Date().getTime() + twenty_four_hours);
         editor.commit();
     }
 
