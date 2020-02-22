@@ -1,18 +1,16 @@
 package com.tiarnan.firststep;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.DialogFragment;
 import androidx.work.Constraints;
 import androidx.work.Data;
 import androidx.work.ExistingPeriodicWorkPolicy;
 import androidx.work.PeriodicWorkRequest;
 import androidx.work.WorkManager;
 
-import android.app.Dialog;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -28,24 +26,25 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.lang.reflect.Type;
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
+import com.google.firebase.dynamiclinks.DynamicLink;
+import com.google.firebase.dynamiclinks.FirebaseDynamicLinks;
+import com.google.firebase.dynamiclinks.PendingDynamicLinkData;
 import com.tiarnan.firststep.utilities.emailVerificationService;
 import com.tiarnan.firststep.utilities.runML;
 import com.google.gson.Gson;
@@ -63,6 +62,7 @@ public class HomeActivity extends AppCompatActivity implements CheckInListDialog
     private Button mButtonCheckin;
     private BottomSheetDialogFragment mCheckInDialog;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,7 +73,35 @@ public class HomeActivity extends AppCompatActivity implements CheckInListDialog
         boolean phoneVerified = sharedpreferences.getBoolean(Constants.phone_verified_key, false);
         boolean waitingOnEmail = sharedpreferences.contains(Constants.waiting_for_email_verified_key);
         boolean waitingOnPhone = sharedpreferences.contains(Constants.waiting_for_phone_verified_key);
-        if (waitingOnEmail) {
+        long emailExpirationTime = sharedpreferences.getLong(Constants.email_verification_expiration_key, 0);
+        long phoneExpirationTime = sharedpreferences.getLong(Constants.phone_verification_expiration_key, 0);
+        long currentTime = new Date().getTime();
+        FirebaseDynamicLinks.getInstance()
+                .getDynamicLink(getIntent())
+                .addOnSuccessListener(this, new OnSuccessListener<PendingDynamicLinkData>() {
+                    @Override
+                    public void onSuccess(PendingDynamicLinkData pendingDynamicLinkData) {
+                        // Get deep link from result (may be null if no link is found)
+                        Uri deepLink = null;
+                        if (pendingDynamicLinkData != null) {
+                            deepLink = pendingDynamicLinkData.getLink();
+                        }
+
+
+                        // Handle the deep link. For example, open the linked
+                        // content, or apply promotional credit to the user's
+                        // account.
+                        // ...
+
+                        // ...
+                    }
+                }).addOnFailureListener(this, new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.w(TAG, "getDynamicLink:onFailure", e);
+            }
+        });
+        if (waitingOnEmail && currentTime < emailExpirationTime ) {
             //TODO: Delete users if verification link stale - 24hrs
             if (!FirebaseAuth.getInstance().getCurrentUser().isEmailVerified()) {
                 Intent intent = new Intent(this, emailVerificationService.class);

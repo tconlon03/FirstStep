@@ -9,6 +9,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
@@ -150,7 +152,15 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
     }
 
     private void sendFirebaseConfirmationEmailForUser(FirebaseUser user){
-        user.sendEmailVerification()
+        String url = "https://firststep.com/verify?uid=" + user.getUid();
+        ActionCodeSettings actionCodeSettings = ActionCodeSettings.newBuilder()
+                .setUrl(url)
+                .setIOSBundleId("com.example.ios")
+                // The default for this is populated with the current android package name.
+                .setAndroidPackageName("com.tiarnan.firststep", false, null)
+                .setHandleCodeInApp(true)
+                .build();
+        user.sendEmailVerification(actionCodeSettings)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
@@ -168,6 +178,7 @@ public class ConfirmationActivity extends AppCompatActivity implements OnSendCon
         startService(intent);
         Log.d(confirmation_tag, "Email Service started by conf activity");
     };
+
 
     @Override
     public void sendConfirmationText() {

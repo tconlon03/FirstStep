@@ -42,6 +42,8 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:28.1.0'
     implementation 'com.android.support:design:28.1.0'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.google.firebase:firebase-invites:17.0.0'
+    implementation 'com.google.firebase:firebase-dynamic-links:19.0.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
